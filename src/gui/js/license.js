@@ -1,9 +1,7 @@
 export const licenseText = `
-<b>Made with ♥️ in Munich by Louis Erbkamm</b>
+<b>ComboCraft World Builder</b> — a fork of <a href="https://github.com/louis-e/arnis" style="color: inherit;" target="_blank">Arnis</a>, made with ♥️ in Munich by Louis Erbkamm
 
-<p>For a full list of contributors, please refer to the <a href="https://github.com/louis-e/arnis/graphs/contributors" style="color: inherit;" target="_blank">Github contributors page</a>. Logo made by nxfx21.
-
-<p style="color: #ff8686;"><b>Download Arnis only from the official source:</b> <a href="https://arnismc.com" style="color: inherit;" target="_blank">https://arnismc.com</a> or <a href="https://github.com/louis-e/arnis" style="color: inherit;" target="_blank">https://github.com/louis-e/arnis/</a>. Every other website providing a download and claiming to be affiliated with the project is unofficial and may be malicious.</p>
+<p>For a full list of contributors to the original Arnis project, please refer to the <a href="https://github.com/louis-e/arnis/graphs/contributors" style="color: inherit;" target="_blank">Github contributors page</a>. Logo made by nxfx21.
 
 <p><b>Third-Party Map Data and Tile Services:</b></p>
 <p>This application uses map tiles from multiple providers, each with their own licensing requirements:</p>

@@ -16,7 +16,21 @@ pub(crate) fn cache_root() -> PathBuf {
         .unwrap_or_else(|| PathBuf::from("./.arnis_custom_cache"))
 }
 
-pub(super) fn fetch_glb(url: &str, filename: &str) -> Result<Vec<u8>, String> {
+pub(super) fn fetch_glb(_upstream_url: &str, filename: &str) -> Result<Vec<u8>, String> {
+    // Fork note (ComboCraft World Builder): the archetype .glb models are
+    // hosted on upstream's server (arnismc.com) and this fork must not fetch
+    // from there. Custom archetypes (stadium/plane) stay disabled and render
+    // procedurally, unless you host the models yourself and point
+    // COMBOCRAFT_CUSTOM_MODELS_URL_BASE at your own server (URL = base/file).
+    let Ok(url_base) = std::env::var("COMBOCRAFT_CUSTOM_MODELS_URL_BASE") else {
+        return Err(
+            "custom archetype models disabled in ComboCraft World Builder fork \
+             (set COMBOCRAFT_CUSTOM_MODELS_URL_BASE to your own model host to enable)"
+                .to_string(),
+        );
+    };
+    let url = format!("{}/{}", url_base.trim_end_matches('/'), filename);
+
     let dir = cache_root();
     let path = dir.join(filename);
     if let Ok(bytes) = fs::read(&path) {
@@ -28,13 +42,13 @@ pub(super) fn fetch_glb(url: &str, filename: &str) -> Result<Vec<u8>, String> {
     let client = ClientBuilder::new()
         .timeout(Duration::from_secs(REQUEST_TIMEOUT_SECS))
         .user_agent(concat!(
-            "Arnis/",
+            "ComboCraftWorldBuilder/",
             env!("CARGO_PKG_VERSION"),
-            " (+https://github.com/louis-e/arnis)"
+            " (fork of https://github.com/louis-e/arnis)"
         ))
         .build()
         .map_err(|e| e.to_string())?;
-    let mut resp = client.get(url).send().map_err(|e| e.to_string())?;
+    let mut resp = client.get(&url).send().map_err(|e| e.to_string())?;
     if !resp.status().is_success() {
         return Err(format!("HTTP {}", resp.status()));
     }

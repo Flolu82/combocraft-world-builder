@@ -17,6 +17,13 @@ Changes made by this fork (branch: combocraft-rebrand):
   the server rotation; only public Overpass mirrors are used.
 - Update check points to this fork's repository instead of
   louis-e/arnis.
+- Custom 3D archetype models (stadium/plane), which upstream downloads
+  at runtime from arnismc.com, are disabled; affected structures render
+  procedurally. They can be re-enabled via the
+  COMBOCRAFT_CUSTOM_MODELS_URL_BASE environment variable pointing at
+  your own model host.
+- The in-game spawn branding map image (assets/branding/arnismc_map.png)
+  was replaced with ComboCraft branding.
 
 The Luanti block-name mapping in src/luanti_block_map.rs remains derived
 from MC2MT by rollerozxa (GNU LGPL v2.1+), as noted in that file.
