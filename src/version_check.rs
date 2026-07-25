@@ -6,10 +6,9 @@ use std::error::Error;
 use std::time::Duration;
 
 // Fork note (ComboCraft World Builder): point the update check at the fork's
-// own repository, not upstream Arnis. TODO: replace GITHUB_USER with the
-// actual GitHub account before publishing releases.
+// own repository, not upstream Arnis.
 const LATEST_RELEASE_API_URL: &str =
-    "https://api.github.com/repos/GITHUB_USER/combocraft-world-builder/releases/latest";
+    "https://api.github.com/repos/Flolu82/combocraft-world-builder/releases/latest";
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct ReleaseAsset {
