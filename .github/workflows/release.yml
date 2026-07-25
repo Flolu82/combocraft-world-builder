@@ -1,8 +1,12 @@
-name: Build and Release Arnis
+name: Build and Release ComboCraft World Builder
 
 on:
   release:
     types: [created]
+
+# GITHUB_TOKEN darf Releases beschreiben (Asset-Upload).
+permissions:
+  contents: write
 
 jobs:
   build:
@@ -11,20 +15,20 @@ jobs:
         include:
           - os: windows-latest
             target: x86_64-pc-windows-msvc
-            binary_name: arnis.exe
-            asset_name: arnis-windows.exe
+            binary_name: combocraft-world-builder.exe
+            asset_name: combocraft-world-builder-windows.exe
           - os: ubuntu-22.04  # Oldest supported base for AppImage glibc/WebKitGTK compatibility
             target: x86_64-unknown-linux-gnu
-            binary_name: arnis
-            asset_name: arnis-linux
+            binary_name: combocraft-world-builder
+            asset_name: combocraft-world-builder-linux
           - os: macos-15-intel  # Intel runner for x86_64 builds
             target: x86_64-apple-darwin
-            binary_name: arnis
-            asset_name: arnis-mac-intel
+            binary_name: combocraft-world-builder
+            asset_name: combocraft-world-builder-mac-intel
           - os: macos-latest  # ARM64 runner for ARM64 builds
             target: aarch64-apple-darwin
-            binary_name: arnis
-            asset_name: arnis-mac-arm64
+            binary_name: combocraft-world-builder
+            asset_name: combocraft-world-builder-mac-arm64
 
     runs-on: ${{ matrix.os }}
 
@@ -68,9 +72,9 @@ jobs:
     - name: Package AppImage as tar.gz (Linux, preserves executable permission)
       if: runner.os == 'Linux'
       run: |
-        mv target/${{ matrix.target }}/release/bundle/appimage/*.AppImage target/release/arnis-linux.AppImage
-        chmod +x target/release/arnis-linux.AppImage
-        tar -czf target/release/arnis-linux-appimage.tar.gz -C target/release arnis-linux.AppImage
+        mv target/${{ matrix.target }}/release/bundle/appimage/*.AppImage target/release/combocraft-world-builder-linux.AppImage
+        chmod +x target/release/combocraft-world-builder-linux.AppImage
+        tar -czf target/release/combocraft-world-builder-linux-appimage.tar.gz -C target/release combocraft-world-builder-linux.AppImage
 
     - name: Install Windows SDK
       if: matrix.os == 'windows-latest'
@@ -88,16 +92,18 @@ jobs:
         if (-not $signtoolPath) { throw "signtool.exe not found." }
         echo "signtool=$signtoolPath" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf8 -Append
       shell: powershell
-    
+
     - name: Self-sign Windows executable
       if: matrix.os == 'windows-latest'
       run: |
         $password = ConvertTo-SecureString -String $env:WINDOWS_CERT_PASSWORD -Force -AsPlainText
-        $cert = New-SelfSignedCertificate -Type CodeSigningCert -Subject 'CN=Arnis' -CertStoreLocation Cert:\CurrentUser\My -NotAfter (Get-Date).AddYears(5)
-        Export-PfxCertificate -Cert $cert -FilePath arnis-cert.pfx -Password $password
-        & $env:signtool sign /f arnis-cert.pfx /p $env:WINDOWS_CERT_PASSWORD /t http://timestamp.digicert.com target/release/${{ matrix.asset_name }}
+        $cert = New-SelfSignedCertificate -Type CodeSigningCert -Subject 'CN=ComboCraft World Builder' -CertStoreLocation Cert:\CurrentUser\My -NotAfter (Get-Date).AddYears(5)
+        Export-PfxCertificate -Cert $cert -FilePath combocraft-cert.pfx -Password $password
+        & $env:signtool sign /f combocraft-cert.pfx /p $env:WINDOWS_CERT_PASSWORD /t http://timestamp.digicert.com target/release/${{ matrix.asset_name }}
       env:
-        WINDOWS_CERT_PASSWORD: ${{ secrets.WINDOWS_CERT_PASSWORD }}
+        # Kein echtes Secret: Das Zertifikat ist ein CI-Wegwerf-Self-Signed
+        # (nur damit die Exe überhaupt eine Signatur trägt), daher fester Wert.
+        WINDOWS_CERT_PASSWORD: combocraft-ci-selfsign
       shell: powershell
 
     - name: Upload artifact
@@ -111,7 +117,7 @@ jobs:
       uses: actions/upload-artifact@v7
       with:
         name: linux-appimage-build
-        path: target/release/arnis-linux-appimage.tar.gz
+        path: target/release/combocraft-world-builder-linux-appimage.tar.gz
 
   create-universal-macos:
     needs: build
@@ -131,20 +137,20 @@ jobs:
 
     - name: Extract Intel and ARM64 binaries
       run: |
-        tar -xzf ./intel/arnis-mac-intel.tar.gz -C ./intel
-        tar -xzf ./arm64/arnis-mac-arm64.tar.gz -C ./arm64
+        tar -xzf ./intel/combocraft-world-builder-mac-intel.tar.gz -C ./intel
+        tar -xzf ./arm64/combocraft-world-builder-mac-arm64.tar.gz -C ./arm64
 
     - name: Create universal binary
       run: |
-        lipo -create -output arnis-mac-universal ./intel/arnis-mac-intel ./arm64/arnis-mac-arm64
-        chmod +x arnis-mac-universal
-        tar -czf arnis-mac-universal.tar.gz arnis-mac-universal
+        lipo -create -output combocraft-world-builder-mac-universal ./intel/combocraft-world-builder-mac-intel ./arm64/combocraft-world-builder-mac-arm64
+        chmod +x combocraft-world-builder-mac-universal
+        tar -czf combocraft-world-builder-mac-universal.tar.gz combocraft-world-builder-mac-universal
 
     - name: Upload universal binary
       uses: actions/upload-artifact@v7
       with:
         name: macos-universal-build
-        path: arnis-mac-universal.tar.gz
+        path: combocraft-world-builder-mac-universal.tar.gz
 
   release:
     needs: [build, create-universal-macos]
@@ -181,9 +187,9 @@ jobs:
       uses: softprops/action-gh-release@v3
       with:
         files: |
-          builds/windows/arnis-windows.exe
-          builds/linux/arnis-linux.tar.gz
-          builds/linux/arnis-linux-appimage.tar.gz
-          builds/macos/arnis-mac-universal.tar.gz
+          builds/windows/combocraft-world-builder-windows.exe
+          builds/linux/combocraft-world-builder-linux.tar.gz
+          builds/linux/combocraft-world-builder-linux-appimage.tar.gz
+          builds/macos/combocraft-world-builder-mac-universal.tar.gz
       env:
-        GITHUB_TOKEN: ${{ secrets.RELEASE_TOKEN }}
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

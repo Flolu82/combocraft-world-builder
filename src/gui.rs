@@ -332,7 +332,7 @@ fn add_localized_world_name(world_path: PathBuf, bbox: &LLBBox) -> PathBuf {
         return world_path;
     };
 
-    // Only modify if it's an Arnis world and doesn't already have an area name
+    // Only modify if it's a "Lukas Welt" world and doesn't already have an area name
     if !current_name.starts_with("Lukas Welt ") || current_name.contains(": ") {
         return world_path;
     }
@@ -1119,7 +1119,7 @@ fn gui_start_generation(
                     let _ = std::fs::create_dir_all(&worlds_dir);
                     let mut counter = 1;
                     let world_name = loop {
-                        let candidate = format!("Arnis Luanti World {counter}");
+                        let candidate = format!("Lukas Welt Luanti {counter}");
                         if !worlds_dir.join(&candidate).exists() {
                             break candidate;
                         }

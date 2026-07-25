@@ -18,7 +18,7 @@ pub fn get_bedrock_output_directory() -> PathBuf {
 /// Windows: %APPDATA%\Minetest\worlds
 /// macOS:   ~/Library/Application Support/minetest/worlds
 /// Linux:   ~/.minetest/worlds
-/// Falls back to Desktop/Arnis Luanti Worlds if no path can be resolved.
+/// Falls back to Desktop/Lukas Welt Luanti Worlds if no path can be resolved.
 pub fn get_luanti_worlds_directory() -> PathBuf {
     let base = if cfg!(target_os = "windows") {
         dirs::data_dir().map(|p| p.join("Minetest"))
@@ -31,7 +31,7 @@ pub fn get_luanti_worlds_directory() -> PathBuf {
     base.map(|p| p.join("worlds")).unwrap_or_else(|| {
         dirs::desktop_dir()
             .unwrap_or_else(|| PathBuf::from("."))
-            .join("Arnis Luanti Worlds")
+            .join("Lukas Welt Luanti Worlds")
     })
 }
 
@@ -89,7 +89,7 @@ pub fn sanitize_for_filename(name: &str) -> String {
 pub fn build_bedrock_output(bbox: &LLBBox, output_dir: PathBuf) -> (PathBuf, String) {
     let area_name = get_area_name_for_bedrock(bbox);
     let safe_name = sanitize_for_filename(&area_name);
-    let filename = format!("Arnis {safe_name}.mcworld");
+    let filename = format!("Lukas Welt {safe_name}.mcworld");
     let lvl_name = format!("Lukas Welt: {safe_name}");
     (output_dir.join(&filename), lvl_name)
 }

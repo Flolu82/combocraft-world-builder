@@ -6,7 +6,7 @@
   <link rel="stylesheet" href="./css/styles.css" />
   <link rel="stylesheet" href="./css/preview3d.css" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Arnis</title>
+  <title>ComboCraft World Builder</title>
   <script src="./js/preview3d.js" defer></script>
   <script type="module" src="./js/main.js" defer></script>
   <script type="module" src="./js/license.js" defer></script>
@@ -372,16 +372,13 @@
             <button type="button" id="version-info-button" class="license-button" onclick="openVersionInfoModal()" data-localize="version_info">Version Info</button>
           </div>
 
-          <!-- GitHub, Buy Me a Coffee and Discord -->
+          <!-- GitHub and Website -->
           <div class="settings-row buymeacoffee-row">
-            <a href="https://github.com/louis-e/arnis" target="_blank" rel="noopener noreferrer" class="github-link">
+            <a href="https://github.com/Flolu82/combocraft-world-builder" target="_blank" rel="noopener noreferrer" class="github-link">
               <img src="./images/github.png" alt="GitHub" class="github-logo">
             </a>
-            <a href="https://buymeacoffee.com/louisdev" target="_blank" rel="noopener noreferrer" class="buymeacoffee-link">
-              <img src="./images/buymeacoffee.png" alt="Buy Me a Coffee" class="buymeacoffee-logo">
-            </a>
-            <a href="https://discord.gg/mA2g69Fhxq" target="_blank" rel="noopener noreferrer" class="discord-link">
-              <img src="./images/discord.png" alt="Discord" class="discord-logo">
+            <a href="https://lukas-gaming-combocraft.de" target="_blank" rel="noopener noreferrer" class="website-link">
+              Unsere Website
             </a>
           </div>
         </div>
@@ -437,14 +434,14 @@
     <div id="update-modal" class="modal" style="display: none;">
       <div class="modal-content update-modal-content">
         <div class="settings-header">
-          <h2 id="update-modal-title" data-localize="update_modal_title">What's new in Arnis</h2>
+          <h2 id="update-modal-title" data-localize="update_modal_title">What's new in ComboCraft World Builder</h2>
           <span class="close-button" onclick="closeUpdateModal()">&times;</span>
         </div>
         <div id="update-modal-body" class="update-modal-body license-scrollable">
           <span data-localize="loading">Loading...</span>
         </div>
         <div id="update-modal-download-note" class="update-modal-download-note" data-localize="update_modal_download_note">
-          Download opens in your browser. Close Arnis before running the new version.
+          Download opens in your browser. Close ComboCraft World Builder before running the new version.
         </div>
         <div class="modal-actions update-modal-actions">
           <button type="button" id="update-download-button" class="btn-primary" onclick="downloadLatestRelease()" data-localize="update_download">Download</button>
@@ -455,8 +452,8 @@
 
     <!-- Footer -->
     <footer class="footer">
-      <a href="https://github.com/louis-e/arnis" target="_blank" rel="noopener noreferrer" class="footer-link" data-localize="footer_text">
-        © {year} Arnis v{version} by louis-e
+      <a href="https://github.com/Flolu82/combocraft-world-builder" target="_blank" rel="noopener noreferrer" class="footer-link" data-localize="footer_text">
+        © {year} ComboCraft World Builder v{version} — Fork of Arnis by louis-e
       </a>
     </footer>
   </main>

@@ -44,7 +44,7 @@ pub(super) fn fetch_glb(_upstream_url: &str, filename: &str) -> Result<Vec<u8>, 
         .user_agent(concat!(
             "ComboCraftWorldBuilder/",
             env!("CARGO_PKG_VERSION"),
-            " (fork of https://github.com/louis-e/arnis)"
+            " (+https://github.com/Flolu82/combocraft-world-builder)"
         ))
         .build()
         .map_err(|e| e.to_string())?;

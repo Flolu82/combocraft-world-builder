@@ -188,9 +188,9 @@ pub(crate) fn overture_client() -> Result<Client, Box<dyn std::error::Error>> {
     Ok(Client::builder()
         .timeout(Duration::from_secs(HTTP_TIMEOUT_SECS))
         .user_agent(concat!(
-            "Arnis/",
+            "ComboCraftWorldBuilder/",
             env!("CARGO_PKG_VERSION"),
-            " (+https://github.com/louis-e/arnis)"
+            " (+https://github.com/Flolu82/combocraft-world-builder)"
         ))
         .build()?)
 }

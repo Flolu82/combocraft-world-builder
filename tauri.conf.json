@@ -10,7 +10,7 @@
     "withGlobalTauri": true,
     "windows": [
       {
-        "title": "Arnis",
+        "title": "ComboCraft World Builder",
         "width": 1000,
         "height": 650,
         "minWidth": 1000,

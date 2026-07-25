@@ -419,9 +419,9 @@ pub(super) fn fetch_fixed_tile_grid<P: FixedTileProvider>(
     // of tiles from the same host.
     let client = reqwest::blocking::Client::builder()
         .user_agent(concat!(
-            "Arnis/",
+            "ComboCraftWorldBuilder/",
             env!("CARGO_PKG_VERSION"),
-            " (+https://github.com/louis-e/arnis)"
+            " (+https://github.com/Flolu82/combocraft-world-builder)"
         ))
         // A single tile is a few MB; a short connect timeout fails fast on a
         // stalled link so the retry fires instead of hanging the full request.

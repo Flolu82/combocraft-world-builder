@@ -62,9 +62,9 @@ fn build_client() -> Result<Client, String> {
     ClientBuilder::new()
         .timeout(Duration::from_secs(REQUEST_TIMEOUT_SECS))
         .user_agent(concat!(
-            "Arnis/",
+            "ComboCraftWorldBuilder/",
             env!("CARGO_PKG_VERSION"),
-            " (+https://github.com/louis-e/arnis)"
+            " (+https://github.com/Flolu82/combocraft-world-builder)"
         ))
         .build()
         .map_err(|e| e.to_string())

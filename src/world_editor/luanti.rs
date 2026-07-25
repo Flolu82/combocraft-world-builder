@@ -404,7 +404,7 @@ fn write_worldmod(
     writeln!(mc, "name = arnis_mapgen")?;
     writeln!(
         mc,
-        "description = Arnis world configuration (singlenode mapgen + spawn)"
+        "description = ComboCraft World Builder world configuration (singlenode mapgen + spawn)"
     )?;
     writeln!(mc, "optional_depends = mcl_spawn")?;
 
@@ -415,7 +415,7 @@ fn write_worldmod(
     }
 
     let mut f = fs::File::create(mod_dir.join("init.lua"))?;
-    writeln!(f, "-- Arnis world configuration")?;
+    writeln!(f, "-- ComboCraft World Builder world configuration")?;
     writeln!(
         f,
         "minetest.set_mapgen_setting(\"mg_name\", \"singlenode\", true)"

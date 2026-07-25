@@ -312,9 +312,9 @@ fn fetch_tile_pyramid(
 ) -> Result<FetchOutcome, Box<dyn std::error::Error>> {
     let client = reqwest::blocking::Client::builder()
         .user_agent(concat!(
-            "Arnis/",
+            "ComboCraftWorldBuilder/",
             env!("CARGO_PKG_VERSION"),
-            " (+https://github.com/louis-e/arnis)"
+            " (+https://github.com/Flolu82/combocraft-world-builder)"
         ))
         .connect_timeout(std::time::Duration::from_secs(20))
         .timeout(std::time::Duration::from_secs(60))

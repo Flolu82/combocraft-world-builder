@@ -178,7 +178,7 @@ fn run_cli() {
         let _ = std::fs::create_dir_all(&base_dir);
         let mut counter = 1;
         let world_name = loop {
-            let candidate = format!("Arnis Luanti World {counter}");
+            let candidate = format!("Lukas Welt Luanti {counter}");
             if !base_dir.join(&candidate).exists() {
                 break candidate;
             }

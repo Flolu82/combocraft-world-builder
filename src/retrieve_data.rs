@@ -34,9 +34,9 @@ fn download_with_reqwest(
     let client: Client = ClientBuilder::new()
         .timeout(Duration::from_secs(timeout_secs))
         .user_agent(concat!(
-            "Arnis/",
+            "ComboCraftWorldBuilder/",
             env!("CARGO_PKG_VERSION"),
-            " (+https://github.com/louis-e/arnis)"
+            " (+https://github.com/Flolu82/combocraft-world-builder)"
         ))
         .build()?;
 
@@ -364,9 +364,9 @@ pub fn fetch_area_name(lat: f64, lon: f64) -> Result<Option<String>, Box<dyn std
     let client = Client::builder()
         .timeout(Duration::from_secs(20))
         .user_agent(concat!(
-            "Arnis/",
+            "ComboCraftWorldBuilder/",
             env!("CARGO_PKG_VERSION"),
-            " (+https://github.com/louis-e/arnis)"
+            " (+https://github.com/Flolu82/combocraft-world-builder)"
         ))
         .build()?;
 

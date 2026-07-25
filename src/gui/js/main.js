@@ -338,7 +338,7 @@ function showModal(modal) {
 function openUpdateInBrowser() {
   const url =
     (latestReleaseInfo && latestReleaseInfo.release && latestReleaseInfo.release.html_url) ||
-    "https://github.com/louis-e/arnis/releases";
+    "https://github.com/Flolu82/combocraft-world-builder/releases";
   openExternal(url);
 }
 

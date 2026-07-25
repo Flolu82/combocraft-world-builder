@@ -51,9 +51,9 @@ pub struct UpdateInfo {
 fn build_client() -> reqwest::Result<Client> {
     Client::builder()
         .user_agent(concat!(
-            "Arnis/",
+            "ComboCraftWorldBuilder/",
             env!("CARGO_PKG_VERSION"),
-            " (+https://github.com/louis-e/arnis)"
+            " (+https://github.com/Flolu82/combocraft-world-builder)"
         ))
         .connect_timeout(Duration::from_secs(5))
         .timeout(Duration::from_secs(10))
