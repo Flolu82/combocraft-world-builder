@@ -1,3 +1,9 @@
+# ComboCraft World Builder
+
+> **Fork-Hinweis:** Dies ist ein Fork von [Arnis](https://github.com/louis-e/arnis) von Louis Erbkamm (Apache-2.0, siehe `LICENSE` und `NOTICE`). Änderungen dieses Forks: Rebranding, Telemetry vollständig entfernt, nur öffentliche Overpass-Mirror, Update-Check zeigt auf dieses Repo. Der Rest dieses READMEs ist weitgehend das Original — die Badges/Download-Links unten zeigen noch auf das Original-Projekt und werden beim ersten eigenen Release ersetzt.
+
+---
+
 <img src="assets/git/banner.png" width="100%" alt="Banner">
 
 # Arnis [![CI Build Status](https://github.com/louis-e/arnis/actions/workflows/ci-build.yml/badge.svg)](https://github.com/louis-e/arnis/actions) [<img alt="GitHub Release" src="https://img.shields.io/github/v/release/louis-e/arnis" />](https://github.com/louis-e/arnis/releases) [<img alt="GitHub Downloads (all assets, all releases" src="https://img.shields.io/github/downloads/louis-e/arnis/total" />](https://github.com/louis-e/arnis/releases) [![Download here](https://img.shields.io/badge/Download-here-green)](https://github.com/louis-e/arnis/releases) [![Discord](https://img.shields.io/discord/1326192999738249267?label=Discord&color=%237289da)](https://discord.gg/mA2g69Fhxq)

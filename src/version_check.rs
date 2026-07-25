@@ -5,7 +5,11 @@ use serde::{Deserialize, Serialize};
 use std::error::Error;
 use std::time::Duration;
 
-const LATEST_RELEASE_API_URL: &str = "https://api.github.com/repos/louis-e/arnis/releases/latest";
+// Fork note (ComboCraft World Builder): point the update check at the fork's
+// own repository, not upstream Arnis. TODO: replace GITHUB_USER with the
+// actual GitHub account before publishing releases.
+const LATEST_RELEASE_API_URL: &str =
+    "https://api.github.com/repos/GITHUB_USER/combocraft-world-builder/releases/latest";
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct ReleaseAsset {

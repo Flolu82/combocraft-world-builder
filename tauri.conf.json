@@ -1,8 +1,8 @@
 {
   "$schema": "https://schema.tauri.app/config/2",
-  "productName": "Arnis",
+  "productName": "ComboCraft World Builder",
   "version": "3.0.0",
-  "identifier": "com.louisdev.arnis",
+  "identifier": "de.combocraft.worldbuilder",
   "build": {
     "frontendDist": "src/gui"
   },

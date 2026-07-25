@@ -1,0 +1,25 @@
+ComboCraft World Builder
+========================
+
+This project is a fork of Arnis (https://github.com/louis-e/arnis),
+Copyright (c) 2022-2026 Louis Erbkamm (louis-e), licensed under the
+Apache License, Version 2.0 (see LICENSE).
+
+Changes made by this fork (branch: combocraft-rebrand):
+
+- Rebranded to "ComboCraft World Builder" (package name, product name,
+  Tauri identifier).
+- Removed all telemetry: upstream sent opt-in crash reports, logs and
+  click events to https://arnismc.com/telemetry/report_telemetry.php.
+  This fork ships a no-op telemetry stub and the related GUI
+  toggles/modals were removed. No data leaves the app.
+- Removed upstream's private Overpass instance (api.arnismc.com) from
+  the server rotation; only public Overpass mirrors are used.
+- Update check points to this fork's repository instead of
+  louis-e/arnis.
+
+The Luanti block-name mapping in src/luanti_block_map.rs remains derived
+from MC2MT by rollerozxa (GNU LGPL v2.1+), as noted in that file.
+
+NOT AN OFFICIAL MINECRAFT PRODUCT. NOT APPROVED BY OR ASSOCIATED WITH
+MOJANG OR MICROSOFT.

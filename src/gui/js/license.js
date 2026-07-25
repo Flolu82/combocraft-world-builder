@@ -112,9 +112,8 @@ Luanti world export targets the <a href="https://www.luanti.org" style="color: i
 <b><a href="https://jqueryui.com" style="color: inherit;" target="_blank">jQuery UI</a> 1.10.3:</b> © jQuery Foundation and contributors. MIT.
 <br><br>
 
-<p><b>Privacy Policy:</b></p>
-If you consent to telemetry data collection, please review our Privacy Policy at:
-<a href="https://arnismc.com/privacypolicy.html" style="color: inherit;" target="_blank">https://arnismc.com/privacypolicy.html</a>.
+<p><b>Privacy:</b></p>
+ComboCraft World Builder (a fork of Arnis) collects no telemetry data at all — the upstream telemetry code has been removed in this fork.
 
 <p>NOT AN OFFICIAL MINECRAFT PRODUCT. NOT APPROVED BY OR ASSOCIATED WITH MOJANG OR MICROSOFT.</p>
 

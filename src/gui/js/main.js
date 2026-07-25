@@ -849,20 +849,7 @@ function initSettings() {
     }
   });
 
-  // Telemetry consent toggle
-  const telemetryToggle = document.getElementById("telemetry-toggle");
-  const telemetryKey = 'telemetry-consent';
-
-  // Load saved telemetry consent
-  const savedConsent = localStorage.getItem(telemetryKey);
-  telemetryToggle.checked = savedConsent === 'true';
-
-  // Handle telemetry consent change
-  telemetryToggle.addEventListener("change", () => {
-    const isEnabled = telemetryToggle.checked;
-    localStorage.setItem(telemetryKey, isEnabled ? 'true' : 'false');
-  });
-
+  // Telemetry was removed in the ComboCraft World Builder fork (no consent toggle).
 
   /// License and Credits
   async function openLicense() {
@@ -1008,47 +995,10 @@ function updateFormatToggleUI(format) {
 // Expose to window for onclick handlers
 window.setWorldFormat = setWorldFormat;
 
-// Telemetry consent (first run only)
+// Telemetry was removed in the ComboCraft World Builder fork.
+// Keep a stub so the generation flow can still "read consent" (always false).
 function initTelemetryConsent() {
-  const key = 'telemetry-consent'; // values: 'true' | 'false'
-  const existing = localStorage.getItem(key);
-
-  const modal = document.getElementById('telemetry-modal');
-  if (!modal) return;
-
-  if (existing === null) {
-    // First run: ask for consent
-    modal.style.display = 'flex';
-    modal.style.justifyContent = 'center';
-    modal.style.alignItems = 'center';
-  }
-
-  // Expose handlers
-  window.acceptTelemetry = () => {
-    localStorage.setItem(key, 'true');
-    modal.style.display = 'none';
-    // Update settings toggle to reflect the consent
-    const telemetryToggle = document.getElementById('telemetry-toggle');
-    if (telemetryToggle) {
-      telemetryToggle.checked = true;
-    }
-  };
-
-  window.rejectTelemetry = () => {
-    localStorage.setItem(key, 'false');
-    modal.style.display = 'none';
-    // Update settings toggle to reflect the consent
-    const telemetryToggle = document.getElementById('telemetry-toggle');
-    if (telemetryToggle) {
-      telemetryToggle.checked = false;
-    }
-  };
-
-  // Utility for other scripts to read consent
-  window.getTelemetryConsent = () => {
-    const v = localStorage.getItem(key);
-    return v === null ? null : v === 'true';
-  };
+  window.getTelemetryConsent = () => false;
 }
 
 // Wires the "Clear Tile Cache" button in the Application settings panel

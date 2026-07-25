@@ -351,17 +351,6 @@
           </div>
         </div>
 
-        <!-- Telemetry Consent Toggle -->
-        <div class="settings-row">
-          <label for="telemetry-toggle" style="white-space: nowrap;">
-            <span data-localize="anonymous_crash_reports">Anonymous Crash Reports</span>
-            <span class="tooltip-icon" data-tooltip="Send anonymous crash data to help improve Arnis">?</span>
-          </label>
-          <div class="settings-control">
-            <input type="checkbox" id="telemetry-toggle" name="telemetry-toggle">
-          </div>
-        </div>
-
         <!-- Tile Cache Cleaner -->
         <div class="settings-row">
           <label for="clear-cache-button">
@@ -427,24 +416,6 @@
         <div class="preview3d-footer">
           <span id="preview3d-meta"></span>
           <span>Drag to pan · right-drag to rotate/tilt · Land cover © ESA WorldCover 2021</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- Telemetry Consent Modal (first run) -->
-    <div id="telemetry-modal" class="modal" style="display: none;">
-      <div class="modal-content">
-        <div class="settings-header">
-          <h2>Help improve Arnis</h2>
-          <span class="close-button" onclick="rejectTelemetry()">&times;</span>
-        </div>
-        <p style="text-align:left; margin-top:12px; margin-bottom: -5px;color:#ececec;">
-          We’d like to collect anonymous usage data like crashes and performance to make Arnis more stable and faster.
-          <a href="https://arnismc.com/privacypolicy.html" style="color: inherit;" target="_blank" rel="noopener noreferrer">No personal data or world contents are collected.</a>
-        </p>
-        <div class="modal-actions" style="margin-top:14px;">
-          <button type="button" class="btn-secondary" onclick="rejectTelemetry()">No thanks</button>
-          <button type="button" class="btn-primary" onclick="acceptTelemetry()">Allow anonymous data</button>
         </div>
       </div>
     </div>

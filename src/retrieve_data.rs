@@ -131,8 +131,10 @@ pub fn fetch_data_from_overpass(
     println!("{} Fetching data...", "[1/7]".bold());
     emit_gui_progress_update(1.0, "Downloading data...");
 
-    // List of Overpass API servers
-    let arnis_api_server = "https://api.arnismc.com/overpass/api/interpreter";
+    // List of Overpass API servers.
+    // Fork note (ComboCraft World Builder): upstream's own hosted instance
+    // api.arnismc.com was removed — a fork should not consume the original
+    // author's server capacity; we rely on the public mirrors only.
     let api_servers: Vec<&str> = vec![
         "https://overpass-api.de/api/interpreter",
         "https://lz4.overpass-api.de/api/interpreter",
@@ -197,8 +199,8 @@ pub fn fetch_data_from_overpass(
         // Fetch data from Overpass API.
         // Strategy:
         // 1) 50% chance: probe one random official server first.
-        // 2) If the probe does not succeed, run the normal path: arnis API once,
-        //    then shuffled official, then shuffled fallback servers.
+        // 2) If the probe does not succeed, run the normal path:
+        //    shuffled official, then shuffled fallback servers.
         #[derive(Clone, Copy, PartialEq, Eq)]
         enum ServerKind {
             Primary,
@@ -215,8 +217,6 @@ pub fn fetch_data_from_overpass(
             request_plan.push((probe_server, ServerKind::Primary));
             probed_server = Some(probe_server);
         }
-
-        request_plan.push((arnis_api_server, ServerKind::Primary));
 
         let mut shuffled_primary_servers = api_servers.clone();
         shuffled_primary_servers.shuffle(&mut rng);
