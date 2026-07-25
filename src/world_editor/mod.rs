@@ -1655,7 +1655,7 @@ impl<'a> WorldEditor<'a> {
             self.world_dir
                 .file_stem()
                 .and_then(|s| s.to_str())
-                .unwrap_or("Arnis World")
+                .unwrap_or("Lukas Welt")
                 .to_string()
         });
 

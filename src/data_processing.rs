@@ -1248,7 +1248,7 @@ pub fn generate_world_with_options(
         );
 
         // Always update spawn Y since we now always set a spawn point (user-selected or default).
-        // Use output_path (the actual "Arnis World N" folder holding level.dat), not args.path —
+        // Use output_path (the actual "Lukas Welt N" folder holding level.dat), not args.path —
         // for CLI runs args.path is the parent --output-dir, so level.dat sits one level deeper.
         if let Err(e) = update_player_spawn_y_after_generation(
             &output_path,

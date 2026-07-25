@@ -66,7 +66,7 @@ impl Drop for SessionLock {
 
 /// Removes a freshly created Java world directory. Called whenever generation
 /// bails out before producing anything useful, so the user isn't left with a
-/// growing pile of empty "Arnis World N" folders.
+/// growing pile of empty "Lukas Welt N" folders.
 fn remove_new_java_world(path: &Path) {
     if path.exists() {
         if let Err(e) = fs::remove_dir_all(path) {
@@ -333,7 +333,7 @@ fn add_localized_world_name(world_path: PathBuf, bbox: &LLBBox) -> PathBuf {
     };
 
     // Only modify if it's an Arnis world and doesn't already have an area name
-    if !current_name.starts_with("Arnis World ") || current_name.contains(": ") {
+    if !current_name.starts_with("Lukas Welt ") || current_name.contains(": ") {
         return world_path;
     }
 
